@@ -11,27 +11,30 @@
     <!--viweport permite definir el área visible del sitio web dado a que cambia de un dispositivo a otro-->
     <meta name="author" content="Sara Fernández Arias" />
     <meta name="keywords" content="Sara Fernández, uniovi, miw,biografía" />
-
-
     <script src="scripts/search.js"></script>
-    <title>Sara Fdez Arias - Aficiones</title>
+    <title>Sara Fdez Arias - Plantas</title>
     <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
  
 
 </head>
-<body >
+<body>
     <header>
         <h1>Sara Fernández Arias</h1>
         <nav>
             <a title="Información" tabindex="1" accesskey="i" href="index.html">Información</a>
             <a title="Proyectos" tabindex="2" accesskey="P" href="projects.html">Proyectos</a>
-            <a title="Aficiones" tabindex="3" accesskey="A" href="hobbies.html"> Otras Aficiones</a>
-            <a title="Plantas" tabindex="4" accesskey="A" href="plants.html">Plantas</a>
-            <a title="Deporte" tabindex="5" accesskey="A" href="sport.html">Deporte</a>
+            <a title="Aficiones" tabindex="3" accesskey="a" href="hobbies.html"> Otras Aficiones</a>
+            <a title="Plantas" tabindex="4" accesskey="l" href="plants.html">Plantas</a>
+            <a title="Deporte" tabindex="5" accesskey="d" href="sport.html">Deporte</a>
         </nav>
-
+        
     </header>
-   <main id="contenido">
+    <section id="buscador">
+        <input type="text" id="search-box" placeholder="Busca aquí..." />
+        <button id="btn-buscar">Buscar</button>
+        <article id="result"></article>
+    </section>
+      <main id="content">
     <h2>
         Mis plantas
     </h2>
@@ -43,45 +46,106 @@
      
     
     <picture>
-        <img src="multimedia/plantas.jfif" alt="Plantas en una estantería">
+        <img src="multimedia/plantas.jpg" alt="Plantas en una estantería">
     </picture>
     <section>
-        <h3>
-            Mis plantas
-        </h3>
-        <p>En la actualidad, cuido de las siguientes plantas: </p>
-        <ul>
-            <li>
-                Alocasia amazonica
-            </li>
-            <li>
-                Maranta leuconeura
-            </li>
-            <li>
-                Begonia Silver Dollar
-            </li>
-        </ul>
-
-
-    </section>
-    <section>
-        <h3>
-            Rutas
-        </h3>
-        <p>
-            Asturias es un paraíso para los amantes de la naturaleza y el senderismo, ofreciendo una gran variedad de rutas que permiten explorar su impresionante paisaje. Desde las altas cumbres de los Picos de Europa** hasta sus **hermosas costas y frondosos bosques, cada rincón de Asturias tiene algo único por descubrir. Algunas de las rutas más destacadas incluyen el Cares, que ofrece vistas espectaculares entre las montañas, y el Camino de Santiago, que atraviesa valles, aldeas y bosques, conectando historia y naturaleza. Además, la región cuenta con rutas más suaves, como las cercanas a la costa, ideales para disfrutar de la tranquilidad de sus playas y acantilados. Sin importar el nivel de dificultad, las rutas asturianas son perfectas para desconectar, respirar aire puro y admirar la belleza de esta tierra.
-        </p>
-        <p>Texto generado con IA .</p>
-    </section>
-    <section>
-        <h3>
-            Actividad Artística reciente
-        </h3>
-    </section>
-    <section>
-        <h3>
-            Mis últimas lecturas
-        </h3>
+        <h3>¿Qué plantas recomiendo?</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Planta</th>
+                    <th>Características</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tbody>
+                <caption>Las notas indican la facilidad. Si eres principiante, usaría el 7 como umbral.</caption>
+                <tr>
+                    <td>Monstera Deliciosa</td>
+                    <td>Planta de hojas grandes, fácil de cuidar, tolerante a la sombra.</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Monstera Adansonii</td>
+                    <td>Similar a la monstera deliciosa, pero con hojas más pequeñas y agujereadas.</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Polka Dot Plant</td>
+                    <td>Planta compacta con hojas de colores brillantes, necesita luz indirecta.</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Begonia Silver Dollar</td>
+                    <td>Hojas plateadas y decorativas, requiere humedad y luz indirecta.</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>Alocasia Polly</td>
+                    <td>Planta tropical con hojas grandes y elegantes, requiere alta humedad.</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>Pothos</td>
+                    <td>Planta resistente, se adapta bien a diversas condiciones, fácil de cuidar.</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Maranta</td>
+                    <td>Conocida como planta de oración, sus hojas se pliegan por la noche. Requiere humedad.</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Orquídea</td>
+                    <td>Florece hermosamente, necesita luz indirecta y cuidado moderado.</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>Kalanchoe</td>
+                    <td>Suculenta de fácil cuidado, florece en invierno, necesita poca agua.</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Suculentas</td>
+                    <td>Plantas resistentes, requieren poca agua y mucho sol.</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Tradescantia Zebrina</td>
+                    <td>Planta colgante con hojas moradas y plateadas, fácil de cuidar.</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>Tradescantia Morada</td>
+                    <td>Similar a la zebrina pero con un tono morado más intenso, resistente.</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Clavel</td>
+                    <td>Planta con flores coloridas, requiere bastante luz y cuidado regular.</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Aloe Vera</td>
+                    <td>Suculenta muy fácil de cuidar, tiene propiedades curativas.</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>Cactus</td>
+                    <td>Plantas resistentes, requieren mucha luz y poca agua.</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>Planta Jade</td>
+                    <td>Suculenta de crecimiento lento, necesita luz brillante y poco riego.</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Spider Plant</td>
+                    <td>Planta fácil de cuidar, ideal para principiantes, resistente.</td>
+                    <td>10</td>
+                </tr>
+            </tbody>
     </section>
    </main>
 

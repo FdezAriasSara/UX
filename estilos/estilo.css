@@ -2,6 +2,7 @@
  
 
 body {
+     
     font-family: 'Arial', sans-serif;
 
     color: #0D2F0B;
@@ -10,15 +11,24 @@ body {
 }
 
 /* Estilos generales */
-header {
+header, th {
+   
     background-color:#232C10;
     color:#FFFFFF; 
     padding: 1rem;
     text-align: center;
 }
+h2{
+    font-size: 3em;
+}
+nav{ display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;}
 
 nav a {
- 
+    padding: 1em;
     color: #E1B35E;
     font-size: 1em;
     margin:2em;
@@ -35,16 +45,57 @@ section {
     padding: 2rem;
 }
 main{
-    margin:4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:2em;
+     
+  
     background-color: #F2F2F2;
 }
-
+img{
  
+    border-style: dotted;
+    border-color: #0D2F0B;
+    border-width: 0.6em;
+    max-width: 100%;  /* La imagen no será más ancha que el viewport */
+    max-height: 100%;  /* La imagen no será más alta que el viewport */
+    width: auto;       /* Mantiene el ancho original si es menor al viewport */
+    height: auto;      /* Mantiene la altura original si es menor al viewport */
+    object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
  
+ table{
+    background-color: #FFFFFF;
+    border-style: ridge;
+    border-width: 0.2em;
+    border-color: #3e3a31;
+    text-wrap: true;
+    border-collapse: collapse; /* Elimina el espacio entre bordes de las celdas */
+    table-layout: fixed;
+ }
+ th{
+    padding: 0.4em;
+    font-size: 1.1em;
+ }
+ td{
 
+    padding: 0.4em;
+    text-align: left;
+   
+ }
+ tr{
+    padding:2em;
+ 
+ }
+
+ tr:hover {
+ 
+    background-color: #B3C490;
+ }
 button {
     background-color: #FADADD;
-    border-radius: 2em;
+    border-radius:3em;
     border-color: #FADADD;
     border-width:1em;
     border-style: outset;

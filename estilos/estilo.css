@@ -9,6 +9,7 @@ body {
     line-height: 1.6;
     margin: 0;
 }
+ 
 
 /* Estilos generales */
 header, th {
@@ -49,7 +50,7 @@ main{
     flex-direction: column;
     justify-content: center;
     padding:2em;
-     
+    margin:2em;
   
     background-color: #F2F2F2;
 }
@@ -63,6 +64,9 @@ img{
     width: auto;       /* Mantiene el ancho original si es menor al viewport */
     height: auto;      /* Mantiene la altura original si es menor al viewport */
     object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+}
+caption{
+    font-style: italic;
 }
  
  table{

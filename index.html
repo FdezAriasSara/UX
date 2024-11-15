@@ -11,9 +11,7 @@
     <!--viweport permite definir el área visible del sitio web dado a que cambia de un dispositivo a otro-->
     <meta name="author" content="Sara Fernández Arias" />
     <meta name="keywords" content="Sara Fernández, uniovi, miw,biografía" />
-
-
-    
+    <script src="scripts/search.js"></script>
     <title>Sara Fdez Arias - Inicio</title>
     <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
  
@@ -23,15 +21,20 @@
     <header>
         <h1>Sara Fernández Arias</h1>
         <nav>
-
             <a title="Información" tabindex="1" accesskey="i" href="index.html">Información</a>
-            <a title="Proyectos" tabindex="2" accesskey="P" href="proyectos.html">Proyectos</a>
-            <a title="Aficiones" tabindex="3" accesskey="A" href="aficiones.html">Aficiones</a>
-
+            <a title="Proyectos" tabindex="2" accesskey="P" href="projects.html">Proyectos</a>
+            <a title="Aficiones" tabindex="3" accesskey="A" href="hobbies.html"> Otras Aficiones</a>
+            <a title="Plantas" tabindex="4" accesskey="A" href="plants.html">Plantas</a>
+            <a title="Deporte" tabindex="5" accesskey="A" href="sport.html">Deporte</a>
         </nav>
-
+        
     </header>
-    <main>
+    <section id="buscador">
+        <input type="text" id="search-box" placeholder="Busca aquí..." />
+        <button id="btn-buscar">Buscar</button>
+        <div id="result"></div>
+    </section>
+    <main id="contenido">
         <h2>
             ¿Quién soy?
         </h2>
@@ -46,9 +49,11 @@
         <p>Email: UO269546@uniovi.es</p>
         <p></p>
         </p>
+      
 
         
     </main>
+ 
 </body>
 
 </html>

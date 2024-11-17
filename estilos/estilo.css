@@ -74,7 +74,7 @@ caption{
     border-style: ridge;
     border-width: 0.2em;
     border-color: #3e3a31;
-    text-wrap: true;
+    text-wrap:pretty;
     border-collapse: collapse; /* Elimina el espacio entre bordes de las celdas */
     table-layout: fixed;
  }
@@ -100,7 +100,7 @@ caption{
 button {
     background-color: #FADADD;
     border-radius:3em;
-    border-color: #FADADD;
+    border-color: #eccfd2;
     border-width:1em;
     border-style: outset;
 }

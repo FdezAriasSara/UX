@@ -6,14 +6,14 @@
 
 
     <!-- Datos que describen el documento al menos información sobre el autor del sitio web, la descripción del mismo y las palabras clave. -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial scale=1.0" />
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial scale=1.0" >
     <!--viweport permite definir el área visible del sitio web dado a que cambia de un dispositivo a otro-->
-    <meta name="author" content="Sara Fernández Arias" />
-    <meta name="keywords" content="Sara Fernández, uniovi, miw,biografía" />
+    <meta name="author" content="Sara Fernández Arias" >
+    <meta name="keywords" content="Sara Fernández, uniovi, miw,biografía" >
     <script src="scripts/search.js"></script>
     <title>Sara Fdez Arias - Proyectos</title>
-    <link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="estilos/estilo.css" >
  
 <!-- Hotjar Tracking Code for https://fdezariassara.github.io/UX/ -->
 <script>
@@ -39,11 +39,15 @@
         </nav>
         
     </header>
-    <section id="buscador">
+    <div id="buscador">
         <label for="search-box">Buscar:</label>
-        <input type="text" id="search-box" placeholder="Busca aquí..." />
-        <article id="result"></article>
-    </section>
+        <input type="text" id="search-box" placeholder="Busca aquí..." >
+        <article id="result">
+            <h2 hidden id="results-header">
+                Resultados de búsqueda:
+            </h2>
+        </article>
+    </div>
     <main id="content">
         <h2>
             Mis proyectos  

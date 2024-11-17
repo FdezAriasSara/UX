@@ -52,10 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function showResults(results) {
           resultBox.innerHTML ='';
   
-        const resultTitle=document.createElement('h2');
-       resultTitle.innerHTML=`Resultados de búsqueda:`
-  
-       resultBox.appendChild(resultTitle) 
+        const resultTitle= doc.getElementById('results-header');
+        resultTitle.style.visibility = "visible";
+
       if (results.length > 0) {
     
         results.forEach(result => {

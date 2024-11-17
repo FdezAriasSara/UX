@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
           resultBox.innerHTML ='';
   
      
-         document.getElementById('results-header').style.visibility = "visible";
+         document.getElementById('results-header').visibility = "visible";
 
       if (results.length > 0) {
     

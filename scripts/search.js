@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Obtener el input de búsqueda
     const searchBox = document.getElementById('search-box');
-  
+
+    const resultsArticle=document.createElement("article");
+    resultsArticle.id.add('results');
+    
     // Obtener el contenedor de los resultados
-    const resultBox = document.getElementById('result');
+    const resultBox = document.getElementById('results');
   
     // Lista de las páginas estáticas a buscar
     const pages = ['index.html', 'hobbies.html', 'plants.html', 'projects.html', 'sport.html'];
@@ -51,9 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar los resultados en el contenedor
     function showResults(results) {
           resultBox.innerHTML ='';
-  
-     
-         document.getElementById('results-header').visibility = "visible";
+       
+         
 
       if (results.length > 0) {
     
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
            resultDiv.innerHTML = `
             <h3>En ${result.title}</h3>
             <p>${result.content}</p>
-            <a href="${result.link}" target="_blank">Ver más</a>
+            <a href="${result.link}" >Ver más</a>
          `;
           
           resultBox.appendChild(resultDiv);

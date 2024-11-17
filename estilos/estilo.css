@@ -74,7 +74,7 @@ caption{
     border-style: ridge;
     border-width: 0.2em;
     border-color: #3e3a31;
-    text-wrap:pretty;
+    text-wrap:wrap;
     border-collapse: collapse; /* Elimina el espacio entre bordes de las celdas */
     table-layout: fixed;
  }

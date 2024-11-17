@@ -2,9 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Obtener el input de búsqueda
     const searchBox = document.getElementById('search-box');
 
-    const resultsArticle=document.createElement("article");
-    resultsArticle.id.add('results');
-    
+   
+
     // Obtener el contenedor de los resultados
     const resultBox = document.getElementById('results');
   
@@ -53,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Mostrar los resultados en el contenedor
     function showResults(results) {
-          resultBox.innerHTML ='';
-       
+      resultBox.innerHTML=``;
+ 
          
 
       if (results.length > 0) {

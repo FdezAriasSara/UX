@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
    
 
     // Obtener el contenedor de los resultados
-    const resultBox = document.getElementById('results');
+    const resultBox = document.getElementById('resultBox');
   
     // Lista de las páginas estáticas a buscar
     const pages = ['index.html', 'hobbies.html', 'plants.html', 'projects.html', 'sport.html'];

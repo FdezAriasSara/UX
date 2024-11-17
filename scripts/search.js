@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function showResults(results) {
           resultBox.innerHTML ='';
   
-        const resultTitle= document.getElementById('results-header');
-        resultTitle.style.visibility = "visible";
+     
+         document.getElementById('results-header').style.visibility = "visible";
 
       if (results.length > 0) {
     

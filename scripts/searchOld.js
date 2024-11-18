@@ -1,49 +1,88 @@
- 
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener el input de búsqueda
+    const searchBox = document.getElementById('search-box');
 
-document.addEventListener('DOMContentLoaded', () => {
-    const inputBuscar = document.getElementById('input-buscar');
-    const btnBuscar = document.getElementById('btn-buscar');
-    const resultados = document.getElementById('resultados');
-    const contenido = document.getElementById('contenido');
+   
 
-    // Función para buscar y resaltar texto
-    function buscarTexto() {
+    // Obtener el contenedor de los resultados
+    const resultBox = document.getElementById('resultBox');
+  
+    // Lista de las páginas estáticas a buscar
+    const pages = ['index.html', 'hobbies.html', 'plants.html', 'projects.html', 'sport.html'];
+  
+    // Función para cargar el contenido de las páginas
+    async function loadPages() {
+      const results = []; // Aquí guardaremos los resultados
+   
+      // Iterar sobre las páginas
+      for (let page of pages) {
+        const response = await fetch(page);
+        const html = await response.text();
+      
+        // Crear un contenedor temporal para analizar el HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+           
+        // Obtener todos los elementos dentro del 'content' (que es donde está tu contenido principal)
+        const content = doc.getElementById('content');
+        if (content) {
+          const items = content.querySelectorAll('p,h3,label,li'); // Aquí se puede ajustar según tus necesidades
      
-        const textoBuscar = inputBuscar.value.trim().toLowerCase();
-        const parrafos = contenido.querySelectorAll('p, h2, h1, h3, li, label, a');
-
-        let encontrado = 0;
-
-        // Quitar resaltado previo
-        parrafos.forEach(parrafo => {
-            parrafo.innerHTML = parrafo.textContent; // Restaurar texto original
-        });
-
-        // Resaltar coincidencias
-        parrafos.forEach(parrafo => {
-            const textoOriginal = parrafo.textContent;
-            const indice = textoOriginal.toLowerCase().indexOf(textoBuscar);
-
-            if (indice !== -1 && textoBuscar !== '') {
-                const antes = textoOriginal.slice(0, indice);
-                const match = textoOriginal.slice(indice, indice + textoBuscar.length);
-                const despues = textoOriginal.slice(indice + textoBuscar.length);
-
-                // Resaltar el texto
-                parrafo.innerHTML = `${antes}<span class="highlight">${match}</span>${despues}`;
-                encontrado++;
+          // Iterar sobre los elementos y buscar coincidencias
+          items.forEach((item) => {
+    console.log(item)
+            const text = item.textContent.toLowerCase();
+            if (text.includes(searchBox.value.toLowerCase())) {
+      console.log(item)
+              // Si hay coincidencia, agregar al array de resultados
+              results.push({
+                page: page,
+                title: content.querySelector('h2') ? content.querySelector('h2').textContent : 'Sin título', // Suponemos que cada página tiene un <h1> o título
+                content: item.textContent,
+                link: `${page}#${item.id || item.className || 'unknown'}`, // Agregar un enlace a la sección de la coincidencia
+              });
             }
-        });
-
-        // Mostrar resultados
-        resultados.textContent = encontrado > 0
-            ? `Se encontraron ${encontrado} coincidencia(s).`
-            : 'No se encontraron resultados.';
+          });
+        }
+      }
+  
+      // Mostrar los resultados en el contenedor
+      showResults(results);
     }
+  
+    // Mostrar los resultados en el contenedor
+    function showResults(results) {
+      resultBox.innerHTML=``;
+ 
+         
 
-    // Evento al hacer clic en "Buscar"
-    btnBuscar.addEventListener('click', buscarTexto);
-
-    // Buscar automáticamente al escribir
-    inputBuscar.addEventListener('input', buscarTexto);
-});
+      if (results.length > 0) {
+    
+        results.forEach(result => {
+          const resultDiv = document.createElement('div');
+          resultDiv.classList.add('result-item');
+          
+          // Crear un enlace a la coincidencia
+           resultDiv.innerHTML = `
+            <h3>En ${result.title}</h3>
+            <p>${result.content}</p>
+            <a href="${result.link}" >Ver más</a>
+         `;
+          
+          resultBox.appendChild(resultDiv);
+        });
+      } else {
+        resultBox.textContent = 'No se encontraron resultados.';
+      }
+    }
+  
+    // Añadir evento de búsqueda en el input
+    searchBox.addEventListener('input', function() {
+      if (searchBox.value.trim() === '') {
+        resultBox.textContent = ''; // Si el campo está vacío, no mostrar resultados
+      } else {
+        loadPages();
+      }
+    })
+  })
+  

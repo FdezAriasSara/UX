@@ -1,45 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Obtener el input de búsqueda
+//coge el el input que es la caja de búsqueda
     const searchBox = document.getElementById('search-box');
 
-   
 
-    // Obtener el contenedor de los resultados
+  //coge la sección con la que se envuelven todos los resultados
     const resultBox = document.getElementById('resultBox');
   
-    // Lista de las páginas estáticas a buscar
+   //Se pasan TODAS las páginas web porque se quiere que el buscador mire en todas
     const pages = ['index.html', 'hobbies.html', 'plants.html', 'projects.html', 'sport.html'];
   
-    // Función para cargar el contenido de las páginas
+
+    /**
+     * Carga los datos que se cogen de las páginas.
+     * Se buscan coincidencias para los siguientes elementos html:
+     *  -párrafos
+     *  -etiquetas de formularios
+     *  -encabezados de niveles 3 al 5 
+     *  -Elementos de lista
+     *  -Elementos que pertenezcan a una tabla
+     *  -Encabezados de tablas
+     *  -En las leyendas de tablas
+     */
     async function loadPages() {
-      const results = []; // Aquí guardaremos los resultados
+      const results = []; 
    
-      // Iterar sobre las páginas
+      // Por cada página de la web
       for (let page of pages) {
+        //se hace una petición para coger todo su contenido.
         const response = await fetch(page);
         const html = await response.text();
       
-        // Crear un contenedor temporal para analizar el HTML
+        //se transforma el contenido de la respuesta al hacer el fetch en un DOM
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
            
-        // Obtener todos los elementos dentro del 'content' (que es donde está tu contenido principal)
+        // sE Obtienen todos los elementos dentro del 'content' ( los elementos relevantes están envueltos en el html en un main con ese id)
         const content = doc.getElementById('content');
         if (content) {
-          const items = content.querySelectorAll('p,h3,label,li'); // Aquí se puede ajustar según tus necesidades
+          const items = content.querySelectorAll('p, form, h2, h3, h4, h5, li, table, th, caption');
      
-          // Iterar sobre los elementos y buscar coincidencias
+          // Se iteraan los los elementos 
           items.forEach((item) => {
-    console.log(item)
-            const text = item.textContent.toLowerCase();
-            if (text.includes(searchBox.value.toLowerCase())) {
-      console.log(item)
+
+            const text = item.textContent.toLowerCase();//se pasa a minúsculas para evitar que sea senssitivo a mayúsculas
+            if (text.includes(searchBox.value.toLowerCase())) { //Se comrprueba la coincidencia
+
               // Si hay coincidencia, agregar al array de resultados
               results.push({
                 page: page,
-                title: content.querySelector('h2') ? content.querySelector('h2').textContent : 'Sin título', // Suponemos que cada página tiene un <h1> o título
-                content: item.textContent,
-                link: `${page}#${item.id || item.className || 'unknown'}`, // Agregar un enlace a la sección de la coincidencia
+                title: content.querySelector('h2') ? content.querySelector('h2').textContent : 'Sin título', //para mostrar de dónde salió el resultado
+                content: item.textContent, //el contenido
+                link: `${page}#${item.id || item.className || 'unknown'}`, // para agregar un enlace a la sección de la coincidencia
               });
             }
           });
@@ -50,16 +61,19 @@ document.addEventListener('DOMContentLoaded', function() {
       showResults(results);
     }
   
-    // Mostrar los resultados en el contenedor
+   /**
+    * Función que renderiza los contenidos resultados de la búsqueda.
+    * @param {*} results , las resultados de búsqueda a pintar.
+    */
     function showResults(results) {
       resultBox.innerHTML=``;
  
          
 
-      if (results.length > 0) {
+      if (results.length > 0) { //si hay coinicdencias
     
-        results.forEach(result => {
-          const resultDiv = document.createElement('div');
+        results.forEach(result => {//por cada una de ellas
+          const resultDiv = document.createElement('div'); 
           resultDiv.classList.add('result-item');
           
           // Crear un enlace a la coincidencia
@@ -69,14 +83,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <a href="${result.link}" >Ver más</a>
          `;
           
-          resultBox.appendChild(resultDiv);
+          resultBox.appendChild(resultDiv); //se añade al conjunto de resultados
         });
       } else {
         resultBox.textContent = 'No se encontraron resultados.';
       }
     }
   
-    // Añadir evento de búsqueda en el input
+    // Añadir evento de búsqueda en el input para que se ejecute cuando se interacciona
     searchBox.addEventListener('input', function() {
       if (searchBox.value.trim() === '') {
         resultBox.textContent = ''; // Si el campo está vacío, no mostrar resultados

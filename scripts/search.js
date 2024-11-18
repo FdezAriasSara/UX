@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
           resultBox.appendChild(resultDiv); //se añade al conjunto de resultados
         });
       } else {
-        resultBox.textContent = 
-        resultDiv.innerHTML = `
+       
+        resultBox.innerHTML = `
  
         <p class="noResultsFeedback">No se encontraron resultados.</p>
  
